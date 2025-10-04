@@ -1,0 +1,28 @@
+python -m venv myenv
+.\myenv\Scripts\Activate
+pip install -r requirements.txt
+for running the file python filename.py
+
+question ---       parallel runables 
+             |
+               --------------->              
+question ->retriver->context(required chunks)---->prompt (query + required chunks) --> llm  --> output -->  outputparser (user can retrive only reuired information )
+            
+        
+                             __start__
+                                  |
+   -------------------------------|----------------------
+    |                             |                      |
+  evaluate analysis         evaluate language          evaluate thought 
+    \                                 |
+      \                                |                          /
+        \                                                      /
+        
+          \
+            \
+              \
+                \
+                  \  ----------------                 
+
+
+                  
