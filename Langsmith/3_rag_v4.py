@@ -26,7 +26,7 @@ PDF_PATH = "islr.pdf"  # change to your file
 INDEX_ROOT = Path(".indices")
 INDEX_ROOT.mkdir(exist_ok=True)
 
-# ----------------- helpers (traced) -----------------
+# helpers (traced) 
 @traceable(name="load_pdf")
 def load_pdf(path: str):
     return PyPDFLoader(path).load()  # list[Document]

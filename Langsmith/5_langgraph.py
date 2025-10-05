@@ -111,7 +111,7 @@ graph.add_edge("final_evaluation", END)
 
 workflow = graph.compile()
 
-# ---------- Direct invoke without wrapper ----------
+# Direct invoke without wrapper 
 if __name__ == "__main__":
     result = workflow.invoke(
         {"essay": essay2},
@@ -126,7 +126,7 @@ if __name__ == "__main__":
         },
     )
 
-    print("\n=== Evaluation Results ===")
+    print("\nEvaluation Results")
     print("Language feedback:\n", result.get("language_feedback", ""), "\n")
     print("Analysis feedback:\n", result.get("analysis_feedback", ""), "\n")
     print("Clarity feedback:\n", result.get("clarity_feedback", ""), "\n")
