@@ -27,3 +27,4 @@ def ask_question(q: str):
 
 result = ask_question("What is the capital of Peru?")
 print(result)
+print("this is the output of the llm")
