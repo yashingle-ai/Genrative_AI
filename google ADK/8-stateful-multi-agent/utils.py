@@ -104,6 +104,11 @@ def add_agent_response_to_history(
     )
 
 
+
+# This block of code i also take wrote with the chat gpt becuase 
+# i want to see how the states are updated after each agent execution when its deal with user query .
+
+
 def display_state(
     session_service, app_name, user_id, session_id, label="Current State"
 ):
@@ -167,7 +172,7 @@ def display_state(
                 else:
                     print(f"  {idx}. {interaction}")
         else:
-            print("📝 Interaction History: None")
+            print(" Interaction History: None")
 
         # Show any additional state keys that might exist
         other_keys = [
@@ -176,7 +181,7 @@ def display_state(
             if k not in ["user_name", "purchased_courses", "interaction_history"]
         ]
         if other_keys:
-            print("🔑 Additional State:")
+            print(" Additional State:")
             for key in other_keys:
                 print(f"  {key}: {session.state[key]}")
 
@@ -189,14 +194,14 @@ async def process_agent_response(event):
     """Process and display agent response events."""
     print(f"Event ID: {event.id}, Author: {event.author}")
 
-    # Check for specific parts first
+    # check for specific parts first
     has_specific_part = False
     if event.content and event.content.parts:
         for part in event.content.parts:
             if hasattr(part, "text") and part.text and not part.text.isspace():
                 print(f"  Text: '{part.text.strip()}'")
 
-    # Check for final response after specific parts
+    # check for final response after specific parts
     final_response = None
     if not has_specific_part and event.is_final_response():
         if (
@@ -205,8 +210,9 @@ async def process_agent_response(event):
             and hasattr(event.content.parts[0], "text")
             and event.content.parts[0].text
         ):
+            
             final_response = event.content.parts[0].text.strip()
-            # Use colors and formatting to make the final response stand out
+            # use colors and formatting to make the final response stand out
             print(
                 f"\n{Colors.BG_BLUE}{Colors.WHITE}{Colors.BOLD}╔══ AGENT RESPONSE ═════════════════════════════════════════{Colors.RESET}"
             )
@@ -231,7 +237,7 @@ async def call_agent_async(runner, user_id, session_id, query):
     final_response_text = None
     agent_name = None
 
-    # Display state before processing the message
+    # display state before processing the message
     display_state(
         runner.session_service,
         runner.app_name,
@@ -244,7 +250,7 @@ async def call_agent_async(runner, user_id, session_id, query):
         async for event in runner.run_async(
             user_id=user_id, session_id=session_id, new_message=content
         ):
-            # Capture the agent name from the event if available
+            # capture the agent name from the event if available
             if event.author:
                 agent_name = event.author
 

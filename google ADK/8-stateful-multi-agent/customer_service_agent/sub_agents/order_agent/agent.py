@@ -32,25 +32,25 @@ def refund_course(tool_context: ToolContext) -> dict:
             "message": "You don't own this course, so it can't be refunded.",
         }
 
-    # Create new list without the course to be refunded
+    # create new list without the course to be refunded
     new_purchased_courses = []
     for course in current_purchased_courses:
-        # Skip empty entries or non-dict entries
+        # skip empty entries or non-dict entries
         if not course or not isinstance(course, dict):
             continue
-        # Skip the course being refunded
+        # skip the course being refunded
         if course.get("id") == course_id:
             continue
-        # Keep all other courses
+        # keep all other courses
         new_purchased_courses.append(course)
 
-    # Update purchased courses in state via assignment
+    # update purchased courses in state via assignment
     tool_context.state["purchased_courses"] = new_purchased_courses
 
-    # Get current interaction history
+    # get current interaction history
     current_interaction_history = tool_context.state.get("interaction_history", [])
 
-    # Create new interaction history with refund added
+    # create new interaction history with refund added
     new_interaction_history = current_interaction_history.copy()
     new_interaction_history.append(
         {"action": "refund_course", "course_id": course_id, "timestamp": current_time}

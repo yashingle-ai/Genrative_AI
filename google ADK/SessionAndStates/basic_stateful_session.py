@@ -9,7 +9,7 @@ from question_answering_agent import question_answering_agent
 load_dotenv()
 
 
-# Create a new session service to store state
+# create a new session service to store state
 session_service_stateful = InMemorySessionService()
 
 initial_state = {
@@ -22,7 +22,7 @@ initial_state = {
     """,
 }
 
-# Create a NEW session
+# create a NEW session
 APP_NAME = "Brandon Bot"
 USER_ID = "brandon_hancock"
 SESSION_ID = str(uuid.uuid4())

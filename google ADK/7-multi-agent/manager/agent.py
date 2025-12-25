@@ -8,7 +8,9 @@ from .tools.tools import get_current_time
 
 root_agent = Agent(
     name="manager",
-    model="gemini-flash-latest",
+    
+
+    
 
     description="Manager agent",
     instruction="""
