@@ -1,1 +1,2 @@
-this is my gemini ai releted wrok repository
+this is my gemini ai releted work repository
+
